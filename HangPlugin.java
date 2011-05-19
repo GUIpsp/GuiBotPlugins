@@ -11,9 +11,7 @@ public class HangPlugin extends BasePlugin {
 		String tmp;
 		tmp = reader.readLine();
 		while (tmp != null) {
-
 			choices.add(tmp);
-			System.out.println(tmp);
 			tmp = reader.readLine();
 
 		}
@@ -46,15 +44,8 @@ public class HangPlugin extends BasePlugin {
 			Main.bot.sendMessage(channel, "A game is already running!");
 			return;
 		} else {
-			newGame(5);
-			Main.bot.sendMessage(channel, "Started a game! " + print() /*
-																		 * +
-																		 * "  "
-																		 * +
-																		 * lives
-																		 * +
-																		 * " lives"
-																		 */);
+			newGame();
+			Main.bot.sendMessage(channel, "Started a game! " + print());
 		}
 	}
 
@@ -70,23 +61,19 @@ public class HangPlugin extends BasePlugin {
 					+ sender + " got it!");
 		} else {
 
-			Main.bot.sendMessage(channel, "Status: " + print() + "  " /*
-																	 * + lives +
-																	 * " lives"
-																	 */);
+			Main.bot.sendMessage(channel, "Status: " + print());
 		}
 
 	}
 
 	public boolean isRunning;
-	public int lives;
+
 	public String word;
 	public String mask;
 	public ArrayList<String> choices = new ArrayList<String>();
 
-	public void newGame(int l) {
+	public void newGame() {
 		isRunning = true;
-		lives = l;
 		word = choices.get(new Random().nextInt(choices.size()));
 		mask = "";
 		for (int i = 0; i < word.length(); i++)

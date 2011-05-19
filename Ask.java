@@ -29,7 +29,7 @@ public class Ask extends BasePlugin {
 			String hostname, String message) {
 		Random random = new Random();
 		random.setSeed(message.hashCode());
-		List list = new ArrayList();
+		List<String> list = new ArrayList<String>();
 		list.add("As I see it, yes");
 		list.add("It is certain");
 		list.add("It is decidedly so");
@@ -53,8 +53,7 @@ public class Ask extends BasePlugin {
 					+ "ask <question> - asks " + Main.bot.getNick()
 					+ " a question");
 		} else {
-			Main.bot.sendMessage(channel,
-					(String) list.get(random.nextInt(list.size())));
+			Main.bot.sendMessage(channel, list.get(random.nextInt(list.size())));
 		}
 	}
 }

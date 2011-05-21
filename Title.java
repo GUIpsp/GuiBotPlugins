@@ -10,7 +10,8 @@ public class Title extends BasePlugin {
 		registerCmd(
 				"title",
 				getClass().getMethod("getTitle", String.class, String.class,
-						String.class, String.class, String.class), this);
+						String.class, String.class, String.class), this,
+				"USAGE: " + GuiBot.pref + "title <url> - gets <url>'s title");
 
 	}
 
@@ -31,10 +32,8 @@ public class Title extends BasePlugin {
 
 	public void getTitle(String channel, String sender, String login,
 			String hostname, String message) throws Throwable {
-		if (message.trim() == "") {
-			Main.bot.sendMessage(channel, "USAGE: " + GuiBot.pref
-					+ "title <url> - gets <url>'s title");
-		} else {
+		if (!(message.trim() == "")) {
+
 			if (!message.toLowerCase().trim().startsWith("http://")) {
 				message = "http://" + message;
 			}

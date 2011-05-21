@@ -8,7 +8,11 @@ public class SetPrefix extends BasePlugin {
 		registerCmd(
 				"setpref",
 				getClass().getMethod("setPref", String.class, String.class,
-						String.class, String.class, String.class), this);
+						String.class, String.class, String.class),
+				this,
+				"USAGE: "
+						+ GuiBot.pref
+						+ "setpref \"<prefix>\" - sets the command prefix to <prefix>");
 
 	}
 
@@ -29,16 +33,12 @@ public class SetPrefix extends BasePlugin {
 
 	public void setPref(String channel, String sender, String login,
 			String hostname, String message) {
-		if (message.trim() == "") {
-			Main.bot.sendMessage(
-					channel,
-					"USAGE: "
-							+ GuiBot.pref
-							+ "setpref \"<prefix>\" - sets the command prefix to <prefix>");
-		} else {
+		if (!(message.trim() == "")) {
+
 			GuiBot.pref = message.replaceAll("\"", "");
 			Main.bot.sendMessage(channel,
 					"Prefix set to \"" + message.replaceAll("\"", "") + "\"");
+
 		}
 	}
 }

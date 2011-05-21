@@ -19,11 +19,11 @@ public class HangPlugin extends BasePlugin {
 		registerCmd(
 				"guess_start",
 				getClass().getMethod("start", String.class, String.class,
-						String.class, String.class, String.class), this);
+						String.class, String.class, String.class), this, "Starts a new hangman game");
 		registerCmd(
 				"guess",
 				getClass().getMethod("guess", String.class, String.class,
-						String.class, String.class, String.class), this);
+						String.class, String.class, String.class), this, "Guesses a letter in the hangman game");
 	}
 
 	public String version() {

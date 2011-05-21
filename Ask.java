@@ -8,7 +8,9 @@ public class Ask extends BasePlugin {
 		registerCmd(
 				"ask",
 				getClass().getMethod("ask", String.class, String.class,
-						String.class, String.class, String.class), this);
+						String.class, String.class, String.class), this,
+				"USAGE: " + GuiBot.pref + "ask <question> - asks " + Main.nick
+						+ " a question");
 	}
 
 	public String version() {
@@ -48,11 +50,7 @@ public class Ask extends BasePlugin {
 		list.add("Don't lose hope");
 		list.add("It may happen");
 		list.add("Maybe");
-		if (message.trim() == "") {
-			Main.bot.sendMessage(channel, "USAGE: " + GuiBot.pref
-					+ "ask <question> - asks " + Main.bot.getNick()
-					+ " a question");
-		} else {
+		if (!(message.trim() == "")) {
 			Main.bot.sendMessage(channel, list.get(random.nextInt(list.size())));
 		}
 	}

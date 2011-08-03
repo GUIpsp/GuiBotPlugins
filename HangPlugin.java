@@ -8,8 +8,7 @@ public class HangPlugin extends BasePlugin {
 		BufferedReader reader = new BufferedReader(new InputStreamReader(
 				new FileInputStream(
 						"/home/guipsp/Desktop/GuiBot/plugins/wordlist.txt")));
-		String tmp;
-		tmp = reader.readLine();
+		String tmp = reader.readLine();
 		while (tmp != null) {
 			choices.add(tmp);
 			tmp = reader.readLine();
